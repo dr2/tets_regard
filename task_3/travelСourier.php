@@ -8,8 +8,8 @@
  * @return int
  */
 function hitCount(array $loopArray, int $weight, array $checkArray = null) : int  {
-    $total = 0;
 
+    $total = 0;
     $checkArray = $checkArray ?? $loopArray;
 
     foreach ($loopArray as $key => $count){
@@ -20,8 +20,7 @@ function hitCount(array $loopArray, int $weight, array $checkArray = null) : int
 
         if(isset($checkArray[$weight - $key])) {
             $total += ($weight - $key) === $key ? floor($count / 2) : min($checkArray[$weight - $key], $count);
-            unset($loopArray[$weight - $key], $loopArray[$key]);
-            unset($checkArray[$weight - $key], $checkArray[$key]);
+            unset($loopArray[$weight - $key], $loopArray[$key], $checkArray[$weight - $key], $checkArray[$key]);
         }
     }
 
@@ -43,7 +42,7 @@ function getResult(array $boxes, int $weight) : int {
     //нечетные числа
     $odd = [];
 
-    foreach ($boxes as $box){
+    foreach ($boxes as $box) {
         if($box % 2) {
             $odd[$box] = isset($odd[$box]) ? $odd[$box] + 1 : 1;
         }else{
