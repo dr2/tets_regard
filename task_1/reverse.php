@@ -13,7 +13,12 @@ $b->next = $c;
 $c->next = $d;
 $d->next = null;
 
-//функция  разворота списка
+/**
+ * функция  разворота списка
+ * @param Test $a
+ * @param object|null $result
+ * @return object
+ */
 function reverse(Test $a, object $result = null) : object {
 
     $new = new Test();
